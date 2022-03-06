@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   ResultSuhu(
                     result: _reamur,
-                    title: "Suhu Dalam Reamur",
+                    title: "Suhu Dalam Reamor",
                   ),
                 ],
               ),
