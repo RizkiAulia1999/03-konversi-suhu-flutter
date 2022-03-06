@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:konversi_suhu/widget/input.dart';
+import 'package:konversi_suhu/widget/konversi.dart';
+import 'package:konversi_suhu/widget/result.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,65 +48,22 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextFormField(
-                controller: etInput,
-                decoration:
-                    InputDecoration(hintText: 'Masukkan Suhu Dalam Celcius'),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
+              InputSuhu(etInput: etInput),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        child: Text(
-                          'Suhu dalam Kelvin',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '$_kelvin',
-                        style: TextStyle(fontSize: 48),
-                      ),
-                    ],
+                  ResultSuhu(
+                    result: _kelvin,
+                    title: "Suhu Dalam Kelvin",
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        child: Text(
-                          'Suhu dalam Reamor',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '$_reamur',
-                        style: TextStyle(fontSize: 48),
-                      ),
-                    ],
+                  ResultSuhu(
+                    result: _reamur,
+                    title: "Suhu Dalam Reamur",
                   ),
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: 40,
-                child: RaisedButton(
-                  onPressed: _konversi,
-                  color: Colors.lightBlue,
-                  textColor: Colors.white,
-                  child: Text(
-                    'Konversi Suhu',
-                  ),
-                ),
+              Convert(
+                konversi: _konversi,
               ),
             ],
           ),
